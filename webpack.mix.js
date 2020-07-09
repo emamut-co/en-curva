@@ -1,13 +1,14 @@
 let mix = require('laravel-mix');
 
-mix.autoload({
+mix.setResourceRoot("../../")
+  .autoload({
     jquery: ["$", "window.jQuery", "jQuery"],
     "popper.js/dist/umd/popper.js": ["Popper"],
   })
   .js("src/js/app.js", "dist/js")
   .sass("src/sass/app.sass", "dist/css")
   .browserSync({
-    proxy: "http://localhost/wp-test/",
+    proxy: "http://localhost/en-curva/",
     open: false,
     files: ["dist/css/app.css", "dist/js/app.js", "./**/*.+(html|php)"],
   })

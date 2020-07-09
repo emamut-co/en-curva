@@ -1,6 +1,3 @@
 <?php get_header(); ?>
-
-  <div class="container mx-auto">
-  </div>
-
+  <i class="far fa-user-circle fa-3x"></i>
 <?php get_footer() ?>
