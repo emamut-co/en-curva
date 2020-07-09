@@ -10,7 +10,7 @@ function my_theme_register_required_plugins()
     array(
       'name'      => 'Advanced Custom Fields',
       'slug'      => 'advanced-custom-fields',
-      'required'  => true
+      'required'  => false
     ),
     array(
       'name'      => 'Custom Post Type Maker',
