@@ -17066,6 +17066,10 @@ body {
   width: 50%;
 }
 
+#main-carousel .carousel-caption a {
+  color: #FFF;
+}
+
 #main-carousel .carousel-caption h1 {
   font-size: 4rem;
   font-weight: 800;

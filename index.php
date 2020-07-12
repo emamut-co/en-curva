@@ -28,7 +28,7 @@ $first = true; ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
           <div class="carousel-caption d-none d-md-block">
-            <h1><?php the_title() ?></h1>
+            <a href="<?php the_permalink() ?>"><h1><?php the_title() ?></h1></a>
           </div>
         </div>
           <?php $first = false;
