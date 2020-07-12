@@ -21,8 +21,30 @@ body
   .carousel-item
     max-height: 85vh
     overflow: hidden
+  .carousel-inner
+    &:after
+      content: '\A'
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      background: rgba(0, 0, 0, .6)
   .carousel-indicators
     li
       height: .4rem
+      margin-right: .4rem
       &.active
         background-color: $orange
+  .carousel-caption
+    width: 50%
+    h1
+      font-size: 4rem
+      font-weight: 800
+      text-align: left
+
+.subtitle
+  color: $black
+  font-weight: bold
+  border-left: .4rem solid $orange
+  padding-left: .5rem
