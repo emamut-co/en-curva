@@ -20,7 +20,7 @@ $first = true; ?>
     <div id="main-carousel" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <?php for($cont == 0; $cont < sizeof($sliderArray->posts); $cont++): ?>
-        <li data-target="#main-carousel" data-slide-to="0" <?php if($cont == 0) echo 'class="active"' ?>></li>
+        <li data-target="#main-carousel" data-slide-to="<?php echo $cont ?>" <?php if($cont == 0) echo 'class="active"' ?>></li>
         <?php endfor ?>
       </ol>
       <div class="carousel-inner">
