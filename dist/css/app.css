@@ -17043,12 +17043,40 @@ body {
   overflow: hidden;
 }
 
+#main-carousel .carousel-inner:after {
+  content: "\A";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
 #main-carousel .carousel-indicators li {
   height: 0.4rem;
+  margin-right: 0.4rem;
 }
 
 #main-carousel .carousel-indicators li.active {
   background-color: #FFB053;
+}
+
+#main-carousel .carousel-caption {
+  width: 50%;
+}
+
+#main-carousel .carousel-caption h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.subtitle {
+  color: #2A2A2A;
+  font-weight: bold;
+  border-left: 0.4rem solid #FFB053;
+  padding-left: 0.5rem;
 }
 
 
