@@ -17076,6 +17076,10 @@ body {
   text-align: left;
 }
 
+.title {
+  font-weight: bold;
+}
+
 .subtitle {
   color: #2A2A2A;
   font-weight: bold;
