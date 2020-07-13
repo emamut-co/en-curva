@@ -46,17 +46,13 @@ $first = true; ?>
     <?php endif ?>
   </div>
 </div>
-<div class="row mt-5">
-  <div class="col">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h4 class="subtitle mb-3">EN NUESTRAS SECCIONES</h4>
-        </div>
-        <div class="col-md-4">
-          <h4 class="subtitle mb-3">LAS MÁS LEIDAS HOY</h4>
-        </div>
-      </div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <h4 class="subtitle mb-3">EN NUESTRAS SECCIONES</h4>
+    </div>
+    <div class="col-md-4">
+      <h4 class="subtitle mb-3">LAS MÁS LEIDAS HOY</h4>
     </div>
   </div>
 </div>

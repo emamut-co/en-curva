@@ -17064,6 +17064,7 @@ body {
 
 #main-carousel .carousel-caption {
   width: 50%;
+  left: 10%;
 }
 
 #main-carousel .carousel-caption a {
