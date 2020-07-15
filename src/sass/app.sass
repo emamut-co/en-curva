@@ -53,3 +53,13 @@ body
   font-weight: bold
   border-left: .4rem solid $orange
   padding-left: .5rem
+
+#our-sections
+  column-count: 2
+  .card
+    &:first-child
+      .card-img-top
+        height: 35rem
+    &:not(:first-child)
+      .card-img-top
+        height: auto

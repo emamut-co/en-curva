@@ -17088,5 +17088,18 @@ body {
   padding-left: 0.5rem;
 }
 
+#our-sections {
+  -moz-column-count: 2;
+       column-count: 2;
+}
+
+#our-sections .card:first-child .card-img-top {
+  height: 35rem;
+}
+
+#our-sections .card:not(:first-child) .card-img-top {
+  height: auto;
+}
+
 
 /*# sourceMappingURL=app.css.map*/
