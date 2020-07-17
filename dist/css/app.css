@@ -17109,5 +17109,17 @@ body {
   height: auto;
 }
 
+#rrss-icons .list-group-item:not(:first-child) {
+  border-left: 1px solid #E1E1E1;
+}
+
+#rrss-icons .list-group-item i {
+  color: #A4A4A4;
+}
+
+#rrss-icons .list-group-item .fa-stack {
+  font-size: 1.3rem;
+}
+
 
 /*# sourceMappingURL=app.css.map*/

@@ -112,6 +112,32 @@ $first = true; ?>
         </div>
       </div>
       <?php endwhile ?>
+      <img src="<?php echo get_template_directory_uri() ?>/img/ads-sample.png" alt="" class="img-fluid">
+      <h4 class="subtitle my-3">SÍGUENOS EN REDES</h4>
+      <ul class="list-group list-group-horizontal" id="rrss-icons">
+        <li class="list-group-item px-0">
+          <span class="fa-stack fa-1x">
+            <i class="far fa-circle fa-stack-2x"></i>
+            <i class="fab fa-facebook-f fa-stack-1x"></i>
+          </span>
+        </li>
+        <li class="list-group-item px-0">
+          <span class="fa-stack fa-1x">
+            <i class="far fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x"></i>
+          </span>
+        </li>
+        <li class="list-group-item px-0">
+          <span class="fa-stack fa-1x">
+            <i class="far fa-circle fa-stack-2x"></i>
+            <i class="fab fa-youtube fa-stack-1x"></i>
+        </li>
+        <li class="list-group-item px-0">
+          <span class="fa-stack fa-1x">
+            <i class="far fa-circle fa-stack-2x"></i>
+            <i class="fab fa-instagram fa-stack-1x"></i>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
