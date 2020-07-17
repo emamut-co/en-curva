@@ -17038,6 +17038,10 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
+.text-black {
+  font-weight: 800;
+}
+
 #main-carousel .carousel-item {
   max-height: 85vh;
   overflow: hidden;
@@ -17073,7 +17077,6 @@ body {
 
 #main-carousel .carousel-caption h1 {
   font-size: 4rem;
-  font-weight: 800;
   text-align: left;
 }
 

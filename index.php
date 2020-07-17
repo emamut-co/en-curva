@@ -22,6 +22,14 @@ $lastPostsArray = new WP_Query(
   )
 );
 
+$mostViewedArray = new WP_Query(
+  array(
+    'meta_key' => 'post_views_count',
+    'orderby' => 'meta_value_num',
+    'posts_per_page' => 3
+  )
+  );
+
 $first = true; ?>
 
 <div class="row">
@@ -38,7 +46,7 @@ $first = true; ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
           <div class="carousel-caption d-none d-md-block">
-            <a href="<?php the_permalink() ?>"><h1><?php the_title() ?></h1></a>
+            <a href="<?php the_permalink() ?>"><h1 class="text-black"><?php the_title() ?></h1></a>
           </div>
         </div>
           <?php $first = false;
@@ -66,8 +74,14 @@ $first = true; ?>
           <div class="card">
             <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
             <div class="card-body">
-              <p><?php the_category(' | ') ?></p>
-              <h5 class="card-title"><?php the_title() ?></h5>
+              <?php $categories= get_the_category();
+              if (!empty($categories)) {
+                $termID = $categories[0]->term_id;
+                $categoryColor = get_field('color_text', 'term_'.$termID);
+                $categoryURL = get_category_link( $category[0]->term_id );
+              } ?>
+              <a href="<?php echo esc_url( $categoryURL ); ?>" class="text-uppercase" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+              <a href="<?php the_permalink() ?>" class="text-dark"><h5 class="card-title text-black"><?php the_title() ?></h5></a>
             </div>
           </div>
           <?php $first = false;
@@ -76,6 +90,28 @@ $first = true; ?>
     </div>
     <div class="col-md-4">
       <h4 class="subtitle mb-3">LAS MÁS LEIDAS HOY</h4>
+      <?php while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
+      <div class="card w-100 mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <?php the_post_thumbnail('thumbnail', ['class' => 'card-img']) ?>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <?php $categories= get_the_category();
+              if (!empty($categories)) {
+                $termID = $categories[0]->term_id;
+                $categoryColor = get_field('color_text', 'term_'.$termID);
+                $categoryURL = get_category_link( $category[0]->term_id );
+              } ?>
+              <a href="<?php echo esc_url( $categoryURL ); ?>" class="text-uppercase" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+              <h5 class="card-title text-black mb-0"><?php the_title() ?></h5>
+              <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php endwhile ?>
     </div>
   </div>
 </div>
