@@ -80,8 +80,8 @@ $first = true; ?>
                 $categoryColor = get_field('color_text', 'term_'.$termID);
                 $categoryURL = get_category_link( $category[0]->term_id );
               } ?>
-              <a href="<?php echo esc_url( $categoryURL ); ?>" class="text-uppercase" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-              <a href="<?php the_permalink() ?>" class="text-dark"><h5 class="card-title text-black"><?php the_title() ?></h5></a>
+              <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+              <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black"><?php the_title() ?></h5></a>
             </div>
           </div>
           <?php $first = false;
@@ -91,21 +91,21 @@ $first = true; ?>
     <div class="col-md-4">
       <h4 class="subtitle mb-3">LAS MÁS LEIDAS HOY</h4>
       <?php while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
-      <div class="card w-100 mb-3">
+      <div class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <?php the_post_thumbnail('thumbnail', ['class' => 'card-img']) ?>
+            <?php the_post_thumbnail(array(100, 70), ['class' => 'card-img my-auto']) ?>
           </div>
           <div class="col-md-8">
-            <div class="card-body">
+            <div class="card-body py-1">
               <?php $categories= get_the_category();
               if (!empty($categories)) {
                 $termID = $categories[0]->term_id;
                 $categoryColor = get_field('color_text', 'term_'.$termID);
                 $categoryURL = get_category_link( $category[0]->term_id );
               } ?>
-              <a href="<?php echo esc_url( $categoryURL ); ?>" class="text-uppercase" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-              <h5 class="card-title text-black mb-0"><?php the_title() ?></h5>
+              <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+              <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black mb-0"><?php the_title() ?></h5></a>
               <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
             </div>
           </div>
