@@ -156,7 +156,7 @@ $first = true; ?>
   </div>
 </div>
 <div class="row bg-gray justify-content-center py-5 my-5">
-  <div class="col-md-7">
+  <div class="col-md-6">
     <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Contact form 1"]') ?>
