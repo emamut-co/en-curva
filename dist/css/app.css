@@ -17046,6 +17046,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.bg-gray {
+  background-color: #F6F6F7;
+}
+
 .category {
   text-transform: uppercase;
   font-size: 0.9rem;

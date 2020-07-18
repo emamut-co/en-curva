@@ -143,32 +143,54 @@ $first = true; ?>
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-youtube fa-stack-1x"></i>
+          </span>
         </li>
         <li class="list-inline-item px-0">
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-instagram fa-stack-1x"></i>
+          </span>
         </li>
       </ul>
     </div>
   </div>
-  <div class="row bg-light justify-content-center my-5">
-    <div class="col-md-7">
-      <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
-      <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
-      <?php echo do_shortcode('[contact-form-7 id="suscribe" title="Contact form 1"]') ?>
-      <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
-    </div>
+</div>
+<div class="row bg-gray justify-content-center py-5 my-5">
+  <div class="col-md-7">
+    <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
+    <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
+    <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Contact form 1"]') ?>
+    <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
   </div>
 </div>
-<div class="row bg-dark py-5">
+<!-- <div class="row bg-dark py-5">
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col-md-7">
         <h4 class="subtitle text-white mb-3">VIDEO DESTACADO</h4>
+        <?php $highlightedVideo = new WP_Query(
+          array(
+            'post__in'        => $sticky,
+            'posts_per_page'  => 1,
+            'tax_query'       => array (
+              array (
+                'taxonomy'    => 'post_format',
+                'field'       => 'slug',
+                'terms'       => array( 'post-format-video' )
+              )
+            )
+          )
+        );
+        while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post(); $do_not_duplicate[] = get_the_ID();
+          $blocks = parse_blocks(get_the_content());
+          foreach ($blocks as $block) {
+            if($block['blockName'] == 'core-embed/youtube')
+              echo preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"420\" height=\"315\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $block['innerHTML']);
+          }
+        endwhile ?>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <?php get_footer() ?>
