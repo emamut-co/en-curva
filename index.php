@@ -12,24 +12,6 @@ $sliderArray = new WP_Query(
   )
 );
 
-$lastPostsArray = new WP_Query(
-  array(
-    'post_status'    => 'publish',
-    'posts_per_page' => 3,
-    'order'          =>'DESC',
-    'post__not_in'   => $sticky,
-    'orderby'        =>'ID'
-  )
-);
-
-$mostViewedArray = new WP_Query(
-  array(
-    'meta_key' => 'post_views_count',
-    'orderby' => 'meta_value_num',
-    'posts_per_page' => 3
-  )
-  );
-
 $first = true; ?>
 
 <div class="row">
@@ -69,9 +51,25 @@ $first = true; ?>
     <div class="col-md-8">
       <h4 class="subtitle mb-3">EN NUESTRAS SECCIONES</h4>
       <div class="card-columns" id="our-sections">
-        <?php $first = true;
+        <?php $lastPostsArray = new WP_Query(
+          array(
+            'post_status'    => 'publish',
+            'posts_per_page' => 3,
+            'order'          =>'DESC',
+            'post__not_in'   => $sticky,
+            'orderby'        =>'ID',
+            'tax_query' => array( array(
+              'taxonomy' => 'post_format',
+              'field' => 'slug',
+              'terms' => array('post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video'),
+              'operator' => 'NOT IN'
+            ) )
+          )
+        );
+
+        $first = true;
         while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); $do_not_duplicate[] = get_the_ID(); ?>
-          <div class="card">
+          <div class="card shadow">
             <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
             <div class="card-body">
               <?php $categories= get_the_category();
@@ -90,8 +88,22 @@ $first = true; ?>
     </div>
     <div class="col-md-4">
       <h4 class="subtitle mb-3">LAS MÁS LEIDAS HOY</h4>
-      <?php while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
-      <div class="card mb-3">
+      <?php $mostViewedArray = new WP_Query(
+        array(
+          'meta_key' => 'post_views_count',
+          'orderby' => 'meta_value_num',
+          'posts_per_page' => 3,
+          'tax_query' => array( array(
+            'taxonomy' => 'post_format',
+            'field' => 'slug',
+            'terms' => array('post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video'),
+            'operator' => 'NOT IN'
+          ) )
+        )
+      );
+
+      while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
+      <div class="card shadow mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
             <?php the_post_thumbnail(array(100, 70), ['class' => 'card-img my-auto']) ?>
@@ -113,31 +125,48 @@ $first = true; ?>
       </div>
       <?php endwhile ?>
       <img src="<?php echo get_template_directory_uri() ?>/img/ads-sample.png" alt="" class="img-fluid">
-      <h4 class="subtitle my-3">SÍGUENOS EN REDES</h4>
-      <ul class="list-group list-group-horizontal" id="rrss-icons">
-        <li class="list-group-item px-0">
+      <h4 class="subtitle mt-4 mb-3">SÍGUENOS EN REDES</h4>
+      <ul class="list-inline" id="rrss-icons">
+        <li class="list-inline-item px-0">
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-facebook-f fa-stack-1x"></i>
           </span>
         </li>
-        <li class="list-group-item px-0">
+        <li class="list-inline-item px-0">
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-twitter fa-stack-1x"></i>
           </span>
         </li>
-        <li class="list-group-item px-0">
+        <li class="list-inline-item px-0">
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-youtube fa-stack-1x"></i>
         </li>
-        <li class="list-group-item px-0">
+        <li class="list-inline-item px-0">
           <span class="fa-stack fa-1x">
             <i class="far fa-circle fa-stack-2x"></i>
             <i class="fab fa-instagram fa-stack-1x"></i>
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="row bg-light justify-content-center my-5">
+    <div class="col-md-7">
+      <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
+      <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
+      <?php echo do_shortcode('[contact-form-7 id="suscribe" title="Contact form 1"]') ?>
+      <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
+    </div>
+  </div>
+</div>
+<div class="row bg-dark py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4 class="subtitle text-white mb-3">VIDEO DESTACADO</h4>
+      </div>
     </div>
   </div>
 </div>

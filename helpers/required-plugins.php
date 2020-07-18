@@ -16,7 +16,12 @@ function my_theme_register_required_plugins()
       'name'      => 'Custom Post Type Maker',
       'slug'      => 'custom-post-type-maker',
       'required'  => false
-    )
+    ),
+    array(
+      'name'      => 'Contact Form 7',
+      'slug'      => 'contact-form-7',
+      'required'  => true
+    ),
 
   );
 

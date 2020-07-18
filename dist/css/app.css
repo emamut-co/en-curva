@@ -17042,6 +17042,10 @@ body {
   font-weight: 800;
 }
 
+.font-lato {
+  font-family: "Lato", sans-serif;
+}
+
 .category {
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -17109,15 +17113,15 @@ body {
   height: auto;
 }
 
-#rrss-icons .list-group-item:not(:first-child) {
+#rrss-icons li:not(:first-child) {
   border-left: 1px solid #E1E1E1;
 }
 
-#rrss-icons .list-group-item i {
+#rrss-icons li i {
   color: #A4A4A4;
 }
 
-#rrss-icons .list-group-item .fa-stack {
+#rrss-icons li .fa-stack {
   font-size: 1.3rem;
 }
 
