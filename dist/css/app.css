@@ -17129,5 +17129,9 @@ body {
   font-size: 1.3rem;
 }
 
+#newsletter-form .wpcf7-form-control.wpcf7-submit {
+  background-color: #100901;
+}
+
 
 /*# sourceMappingURL=app.css.map*/

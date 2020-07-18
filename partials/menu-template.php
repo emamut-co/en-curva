@@ -1,6 +1,5 @@
 <div class="container fixed-top">
   <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" id="navbar-primary">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" aria-controls="main-navbar-collapse" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'your-theme-slug' ); ?>">
       <span class="navbar-toggler-icon"></span>
     </button>
