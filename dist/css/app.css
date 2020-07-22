@@ -17105,6 +17105,18 @@ body {
   padding-left: 0.5rem;
 }
 
+.bg-section-1 {
+  background: url(../../images/background.png?2d11ee0a63b4366912baa664eadbbd8a);
+  background-size: contain;
+  background-position: top;
+  background-repeat-y: no-repeat;
+}
+
+.bg-section-2 {
+  background: url(../../images/curvas.png?b3df887844be91d87d6358536f51d65b);
+  background-size: contain;
+}
+
 #our-sections {
   -moz-column-count: 2;
        column-count: 2;
