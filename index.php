@@ -1,6 +1,5 @@
 <?php get_header();
 
-$do_not_duplicate = array();
 $sticky = get_option( 'sticky_posts' );
 
 $sliderArray = new WP_Query(
@@ -30,7 +29,7 @@ $first = true; ?>
         <?php endfor ?>
       </ol>
       <div class="carousel-inner">
-        <?php while ( $sliderArray->have_posts() ) : $sliderArray->the_post(); $do_not_duplicate[] = get_the_ID(); ?>
+        <?php while ( $sliderArray->have_posts() ) : $sliderArray->the_post(); ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
           <div class="carousel-caption d-none d-md-block">
@@ -76,7 +75,7 @@ $first = true; ?>
           );
 
           $first = true;
-          while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); $do_not_duplicate[] = get_the_ID(); ?>
+          while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); ?>
             <div class="card shadow">
               <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
               <div class="card-body">
@@ -192,7 +191,7 @@ $first = true; ?>
             )
           )
         );
-        while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post(); $do_not_duplicate[] = get_the_ID();
+        while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post();
           $blocks = parse_blocks(get_the_content());
           foreach ($blocks as $block) {
             if($block['blockName'] == 'core-embed/youtube')
