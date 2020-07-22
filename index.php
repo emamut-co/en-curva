@@ -80,7 +80,7 @@ $first = true; ?>
             <div class="card shadow">
               <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
               <div class="card-body">
-                <?php $categories= get_the_category();
+                <?php $categories = get_the_category();
                 if (!empty($categories)) {
                   $termID = $categories[0]->term_id;
                   $categoryColor = get_field('color_text', 'term_'.$termID);
@@ -118,7 +118,7 @@ $first = true; ?>
               </div>
               <div class="col-md-8">
                 <div class="card-body py-1">
-                  <?php $categories= get_the_category();
+                  <?php $categories = get_the_category();
                   if (!empty($categories)) {
                     $termID = $categories[0]->term_id;
                     $categoryColor = get_field('color_text', 'term_'.$termID);
@@ -198,7 +198,7 @@ $first = true; ?>
             if($block['blockName'] == 'core-embed/youtube')
               echo preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"100%\" height=\"415\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $block['innerHTML']);
           }
-          $categories= get_the_category();
+          $categories = get_the_category();
           if (!empty($categories)) {
             $termID = $categories[0]->term_id;
             $categoryColor = get_field('color_text', 'term_'.$termID);
