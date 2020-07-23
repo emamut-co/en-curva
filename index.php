@@ -33,7 +33,7 @@ $first = true; ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
           <div class="carousel-caption d-none d-md-block">
-            <a href="<?php the_permalink() ?>"><h1 class="text-black"><?php the_title() ?></h1></a>
+            <a href="<?php the_permalink() ?>"><h1 class="text-800"><?php the_title() ?></h1></a>
           </div>
         </div>
           <?php $first = false;
@@ -86,7 +86,7 @@ $first = true; ?>
                   $categoryURL = get_category_link( $category[0]->term_id );
                 } ?>
                 <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-                <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black"><?php the_title() ?></h5></a>
+                <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800"><?php the_title() ?></h5></a>
               </div>
             </div>
             <?php $first = false;
@@ -124,7 +124,7 @@ $first = true; ?>
                     $categoryURL = get_category_link( $category[0]->term_id );
                   } ?>
                   <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black mb-0"><?php the_title() ?></h5></a>
+                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800 mb-0"><?php the_title() ?></h5></a>
                   <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
                 </div>
               </div>
@@ -166,7 +166,7 @@ $first = true; ?>
 
 <div class="row bg-gray justify-content-center py-5 my-5">
   <div class="col-md-6">
-    <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
+    <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
     <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
@@ -206,7 +206,7 @@ $first = true; ?>
             $categoryURL = get_category_link( $category[0]->term_id );
           } ?>
           <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-          <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black mb-0"><?php the_title() ?></h5></a>
+          <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
         <?php endwhile; ?>
       </div>
     </div>
