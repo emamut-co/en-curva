@@ -22,7 +22,7 @@ $first = true; ?>
 <div class="row">
   <div class="col">
     <?php if ( isset($sticky[0]) ): ?>
-    <div id="main-carousel" class="carousel slide" data-ride="carousel">
+    <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
       <ol class="carousel-indicators">
         <?php for ( $cont == 0; $cont < sizeof($sliderArray->posts); $cont++ ): ?>
         <li data-target="#main-carousel" data-slide-to="<?php echo $cont ?>" <?php if ( $cont == 0 ) echo 'class="active"' ?>></li>
