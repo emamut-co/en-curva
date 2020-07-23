@@ -178,10 +178,12 @@ $first = true; ?>
     <div class="row">
       <div class="col-md-7">
         <h4 class="subtitle text-white mb-3">VIDEO DESTACADO</h4>
-        <?php $highlightedVideo = new WP_Query(
+        <?php $my_acf_checkbox_field_arr = get_field('sticky');
+        $highlightedVideo = new WP_Query(
           array(
-            'post__in'        => $sticky,
             'posts_per_page'  => 1,
+            'meta_key'		    => 'sticky',
+            'meta_value'	    => $my_acf_checkbox_field_arr,
             'tax_query'       => array (
               array (
                 'taxonomy'    => 'post_format',
