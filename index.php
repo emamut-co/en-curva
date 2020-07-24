@@ -1,6 +1,5 @@
 <?php get_header();
 
-$do_not_duplicate = array();
 $sticky = get_option( 'sticky_posts' );
 
 $sliderArray = new WP_Query(
@@ -23,18 +22,18 @@ $first = true; ?>
 <div class="row">
   <div class="col">
     <?php if ( isset($sticky[0]) ): ?>
-    <div id="main-carousel" class="carousel slide" data-ride="carousel">
+    <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
       <ol class="carousel-indicators">
         <?php for ( $cont == 0; $cont < sizeof($sliderArray->posts); $cont++ ): ?>
         <li data-target="#main-carousel" data-slide-to="<?php echo $cont ?>" <?php if ( $cont == 0 ) echo 'class="active"' ?>></li>
         <?php endfor ?>
       </ol>
       <div class="carousel-inner">
-        <?php while ( $sliderArray->have_posts() ) : $sliderArray->the_post(); $do_not_duplicate[] = get_the_ID(); ?>
+        <?php while ( $sliderArray->have_posts() ) : $sliderArray->the_post(); ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
           <div class="carousel-caption d-none d-md-block">
-            <a href="<?php the_permalink() ?>"><h1 class="text-black"><?php the_title() ?></h1></a>
+            <a href="<?php the_permalink() ?>"><h1 class="text-800"><?php the_title() ?></h1></a>
           </div>
         </div>
           <?php $first = false;
@@ -76,18 +75,18 @@ $first = true; ?>
           );
 
           $first = true;
-          while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); $do_not_duplicate[] = get_the_ID(); ?>
+          while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); ?>
             <div class="card shadow">
               <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
               <div class="card-body">
-                <?php $categories= get_the_category();
+                <?php $categories = get_the_category();
                 if (!empty($categories)) {
                   $termID = $categories[0]->term_id;
                   $categoryColor = get_field('color_text', 'term_'.$termID);
                   $categoryURL = get_category_link( $category[0]->term_id );
                 } ?>
                 <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-                <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black"><?php the_title() ?></h5></a>
+                <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800"><?php the_title() ?></h5></a>
               </div>
             </div>
             <?php $first = false;
@@ -101,7 +100,7 @@ $first = true; ?>
             'meta_key'        => 'post_views_count',
             'orderby'         => 'meta_value_num',
             'posts_per_page'  => 3,
-            'tax_query' => array( array(
+            'tax_query'       => array( array(
               'taxonomy' => 'post_format',
               'field' => 'slug',
               'terms' => array('post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video'),
@@ -118,14 +117,14 @@ $first = true; ?>
               </div>
               <div class="col-md-8">
                 <div class="card-body py-1">
-                  <?php $categories= get_the_category();
+                  <?php $categories = get_the_category();
                   if (!empty($categories)) {
                     $termID = $categories[0]->term_id;
                     $categoryColor = get_field('color_text', 'term_'.$termID);
                     $categoryURL = get_category_link( $category[0]->term_id );
                   } ?>
                   <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black mb-0"><?php the_title() ?></h5></a>
+                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800 mb-0"><?php the_title() ?></h5></a>
                   <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
                 </div>
               </div>
@@ -167,7 +166,7 @@ $first = true; ?>
 
 <div class="row bg-gray justify-content-center py-5 my-5">
   <div class="col-md-6">
-    <h5 class="text-black">¡NEWSLETTER PARA AVENTUREROS!</h5>
+    <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
     <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
@@ -177,36 +176,74 @@ $first = true; ?>
 <div class="row bg-dark bg-section-2 py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-7">
+      <div class="col">
         <h4 class="subtitle text-white mb-3">VIDEO DESTACADO</h4>
-        <?php $highlightedVideo = new WP_Query(
-          array(
-            'post__in'        => $sticky,
-            'posts_per_page'  => 1,
-            'tax_query'       => array (
-              array (
-                'taxonomy'    => 'post_format',
-                'field'       => 'slug',
-                'terms'       => array( 'post-format-video' )
-              )
+      </div>
+    </div>
+    <div class="row">
+      <?php $my_acf_checkbox_field_arr = get_field('sticky');
+      $highlightedVideo = new WP_Query(
+        array(
+          'posts_per_page'  => 5,
+          'meta_key'		    => 'sticky',
+          'meta_value'	    => $my_acf_checkbox_field_arr,
+          'tax_query'       => array (
+            array (
+              'taxonomy'    => 'post_format',
+              'field'       => 'slug',
+              'terms'       => array( 'post-format-video' )
             )
           )
-        );
-        while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post(); $do_not_duplicate[] = get_the_ID();
-          $blocks = parse_blocks(get_the_content());
-          foreach ($blocks as $block) {
-            if($block['blockName'] == 'core-embed/youtube')
-              echo preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"100%\" height=\"415\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>", $block['innerHTML']);
-          }
-          $categories= get_the_category();
-          if (!empty($categories)) {
-            $termID = $categories[0]->term_id;
-            $categoryColor = get_field('color_text', 'term_'.$termID);
-            $categoryURL = get_category_link( $category[0]->term_id );
-          } ?>
-          <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-          <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-black mb-0"><?php the_title() ?></h5></a>
-        <?php endwhile; ?>
+        )
+      );
+      $cont = 0;
+      while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post();
+        if($cont == 0): ?>
+          <div class="col-md-7">
+            <?php $blocks = parse_blocks(get_the_content());
+            foreach ($blocks as $block) {
+              if($block['blockName'] == 'core-embed/youtube')
+                echo preg_replace(
+                  "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                  "<iframe width=\"100%\" height=\"415\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
+                  $block['innerHTML']
+                );
+            }
+            $categories = get_the_category();
+            if (!empty($categories)) {
+              $termID = $categories[0]->term_id;
+              $categoryColor = get_field('color_text', 'term_'.$termID);
+              $categoryURL = get_category_link( $category[0]->term_id );
+            } ?>
+            <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+            <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
+          </div>
+          <div class="col-md-5">
+        <?php else: ?>
+          <div class="media">
+            <?php $blocks = parse_blocks(get_the_content());
+            foreach ($blocks as $block) {
+              if($block['blockName'] == 'core-embed/youtube')
+                echo preg_replace(
+                  "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                  "<iframe class=\"align-self-center mr-3\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
+                  $block['innerHTML']
+                );
+            }
+            $categories = get_the_category();
+            if (!empty($categories)) {
+              $termID = $categories[0]->term_id;
+              $categoryColor = get_field('color_text', 'term_'.$termID);
+              $categoryURL = get_category_link( $category[0]->term_id );
+            } ?>
+            <div class="media-body">
+              <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+              <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
+            </div>
+          </div>
+        <?php endif;
+        $cont++;
+      endwhile; ?>
       </div>
     </div>
   </div>
