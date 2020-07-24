@@ -36,10 +36,10 @@
     <div class="row pt-5">
       <div class="col-12">
         <div class="list-group list-group-horizontal">
-          <a href="#" class="list-group-item list-group-item-action">Acerca de Nosotros</a>
-          <a href="#" class="list-group-item list-group-item-action">Contactanos</a>
-          <a href="#" class="list-group-item list-group-item-action">Terminos y condiciones</a>
-          <a href="#" class="list-group-item list-group-item-action">Política de Privacidad</a>
+          <a href="#" class="list-group-item list-group-item-action text-center border-0">Acerca de Nosotros</a>
+          <a href="#" class="list-group-item list-group-item-action text-center border-0">Contactanos</a>
+          <a href="#" class="list-group-item list-group-item-action text-center border-0">Terminos y condiciones</a>
+          <a href="#" class="list-group-item list-group-item-action text-center border-0">Política de Privacidad</a>
         </div>
       </div>
     </div>

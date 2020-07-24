@@ -205,7 +205,7 @@ $first = true; ?>
               if($block['blockName'] == 'core-embed/youtube')
                 echo preg_replace(
                   "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                  "<iframe width=\"100%\" height=\"415\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
+                  "<iframe width=\"100%\" height=\"600\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
                   $block['innerHTML']
                 );
             }
