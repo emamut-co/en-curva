@@ -10,18 +10,18 @@ function my_theme_register_required_plugins()
     array(
       'name'      => 'Advanced Custom Fields',
       'slug'      => 'advanced-custom-fields',
-      'required'  => false
-    ),
-    array(
-      'name'      => 'Custom Post Type Maker',
-      'slug'      => 'custom-post-type-maker',
-      'required'  => false
+      'required'  => true
     ),
     array(
       'name'      => 'Contact Form 7',
       'slug'      => 'contact-form-7',
       'required'  => true
     ),
+    // array(
+    //   'name'      => 'Custom Post Type Maker',
+    //   'slug'      => 'custom-post-type-maker',
+    //   'required'  => false
+    // ),
 
   );
 
