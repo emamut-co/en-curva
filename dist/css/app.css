@@ -17123,7 +17123,7 @@ body {
 }
 
 #our-sections .card:first-child .card-img-top {
-  height: 35rem;
+  height: 40rem;
 }
 
 #our-sections .card:not(:first-child) .card-img-top {
