@@ -248,7 +248,7 @@ $first = true; ?>
     </div>
     <div class="row justify-content-center mt-5">
       <div class="col-md-3">
-        <h4 class="subtitle-bottom text-white text-center mb-3">VIDEO DESTACADO</h4>
+        <h4 class="subtitle bottom text-white text-center mb-3">VIDEO DESTACADO</h4>
       </div>
     </div>
     <div class="row" id="more-videos">

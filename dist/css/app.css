@@ -17106,7 +17106,9 @@ body {
   border-left: 0.4rem solid #FFB053;
 }
 
-.subtitle-bottom {
+.subtitle.bottom {
+  border-left: initial;
+  padding-left: initial;
   border-bottom: 0.4rem solid #FFB053;
   padding-bottom: 0.5rem;
 }
