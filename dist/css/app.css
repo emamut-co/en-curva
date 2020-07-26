@@ -17060,7 +17060,7 @@ body {
   overflow: hidden;
 }
 
-#main-carousel .carousel-inner:after {
+#main-carousel .carousel-inner .carousel-item:after {
   content: "\A";
   position: absolute;
   width: 100%;
@@ -17068,6 +17068,7 @@ body {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.6);
+  background-size: cover;
 }
 
 #main-carousel .carousel-indicators li {
@@ -17101,8 +17102,13 @@ body {
 .subtitle {
   color: #2A2A2A;
   font-weight: bold;
-  border-left: 0.4rem solid #FFB053;
   padding-left: 0.5rem;
+  border-left: 0.4rem solid #FFB053;
+}
+
+.subtitle-bottom {
+  border-bottom: 0.4rem solid #FFB053;
+  padding-bottom: 0.5rem;
 }
 
 .bg-section-1 {

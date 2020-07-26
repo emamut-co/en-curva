@@ -184,7 +184,7 @@ $first = true; ?>
       <?php $my_acf_checkbox_field_arr = get_field('sticky');
       $highlightedVideo = new WP_Query(
         array(
-          'posts_per_page'  => 5,
+          'posts_per_page'  => 4,
           'meta_key'		    => 'sticky',
           'meta_value'	    => $my_acf_checkbox_field_arr,
           'tax_query'       => array (
@@ -220,7 +220,7 @@ $first = true; ?>
           </div>
           <div class="col-md-5">
         <?php else: ?>
-          <div class="media">
+          <div class="media mb-4">
             <?php $blocks = parse_blocks(get_the_content());
             foreach ($blocks as $block) {
               if($block['blockName'] == 'core-embed/youtube')
@@ -245,6 +245,13 @@ $first = true; ?>
         $cont++;
       endwhile; ?>
       </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-3">
+        <h4 class="subtitle-bottom text-white text-center mb-3">VIDEO DESTACADO</h4>
+      </div>
+    </div>
+    <div class="row" id="more-videos">
     </div>
   </div>
 </div>
