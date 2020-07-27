@@ -249,9 +249,21 @@ $first = true; ?>
     <div class="row justify-content-center mt-5">
       <div class="col-md-3">
         <h4 class="subtitle bottom text-white text-center mb-3">VIDEO DESTACADO</h4>
+        <div class="h-75 d-block"></div>
       </div>
     </div>
-    <div class="row" id="more-videos">
+  </div>
+</div>
+<div class="row">
+  <div class="container">
+    <div class="card-deck" id="more-videos">
+      <?php for($cont = 0; $cont < 3; $cont++): ?>
+        <div class="card">
+          <!-- <div class="card-image"> -->
+            <iframe height="250" src="https://www.youtube.com/embed/SC1XE85BC9o" frameborder="0" allowfullscreen></iframe>
+          <!-- </div> -->
+        </div>
+      <?php endfor ?>
     </div>
   </div>
 </div>
