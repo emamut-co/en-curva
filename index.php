@@ -203,11 +203,7 @@ $first = true; ?>
             <?php $blocks = parse_blocks(get_the_content());
             foreach ($blocks as $block) {
               if($block['blockName'] == 'core-embed/youtube')
-                echo preg_replace(
-                  "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                  "<iframe width=\"100%\" height=\"600\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
-                  $block['innerHTML']
-                );
+                echo render_block($block);
             }
             $categories = get_the_category();
             if (!empty($categories)) {
@@ -248,22 +244,31 @@ $first = true; ?>
     </div>
     <div class="row justify-content-center mt-5">
       <div class="col-md-3">
-        <h4 class="subtitle bottom text-white text-center mb-3">VIDEO DESTACADO</h4>
+        <h4 class="subtitle bottom text-white text-center mb-3">VER MAS VIDEOS</h4>
         <div class="h-75 d-block"></div>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="container">
     <div class="card-deck" id="more-videos">
-      <?php for($cont = 0; $cont < 3; $cont++): ?>
+      <?php $moreVideos = new WP_Query(
+        array(
+          'posts_per_page'  => 3,
+          'tax_query'       => array (
+            array (
+              'taxonomy'    => 'post_format',
+              'field'       => 'slug',
+              'terms'       => array( 'post-format-video' )
+            )
+          )
+        )
+      );
+
+      while ( $moreVideos->have_posts() ) : $moreVideos->the_post(); ?>
         <div class="card">
           <!-- <div class="card-image"> -->
             <iframe height="250" src="https://www.youtube.com/embed/SC1XE85BC9o" frameborder="0" allowfullscreen></iframe>
           <!-- </div> -->
         </div>
-      <?php endfor ?>
+      <?php endwhile ?>
     </div>
   </div>
 </div>
