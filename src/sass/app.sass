@@ -92,6 +92,7 @@ body
     &:first-child
       .card-img-top
         height: 40rem
+        object-fit: cover
     &:not(:first-child)
       .card-img-top
         height: auto
@@ -110,5 +111,15 @@ body
     &.wpcf7-submit
       background-color: #100901
 
-#more-videos-bottom
-  height: 10rem
+#blog-section
+  position: relative
+  min-height: 40rem
+  background-size: cover !important
+  background-repeat: no-repeat !important
+  background-position: center !important
+  .caption
+    background-color: #FFF
+    position: absolute
+    width: 50%
+    bottom: -4rem
+    left: 28%

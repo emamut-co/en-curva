@@ -60,16 +60,17 @@ $first = true; ?>
         <div class="card-columns" id="our-sections">
           <?php $lastPostsArray = new WP_Query(
             array(
-              'post_status'    => 'publish',
-              'posts_per_page' => 3,
-              'order'          =>'DESC',
-              'post__not_in'   => $sticky,
-              'orderby'        =>'ID',
-              'tax_query' => array( array(
-                'taxonomy' => 'post_format',
-                'field' => 'slug',
-                'terms' => array('post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video'),
-                'operator' => 'NOT IN'
+              'post_status'       => 'publish',
+              'posts_per_page'    => 3,
+              'order'             => 'DESC',
+              'post__not_in'      => $sticky,
+              'category__not_in'  => 8,
+              'orderby'           => 'ID',
+              'tax_query'         => array( array(
+                'taxonomy'  => 'post_format',
+                'field'     => 'slug',
+                'terms'     => array( 'post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video' ),
+                'operator'  => 'NOT IN'
               ) )
             )
           );
@@ -171,6 +172,33 @@ $first = true; ?>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
     <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
   </div>
+</div>
+
+<?php
+  $blogArray = new WP_Query(
+    array(
+      'cat'             => 8,
+      'posts_per_page'  => 1
+    )
+  );
+?>
+
+<div class="row">
+  <?php while ( $blogArray->have_posts() ): $blogArray->the_post(); $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
+  <div class="col position-relative" id="blog-section" style="background: url('<?php echo $thumbnail[0]  ?>')">
+    <div class="text-center p-5 caption">
+      <?php $categories = get_the_category();
+        if (!empty($categories)) {
+          $termID = $categories[0]->term_id;
+          $categoryColor = get_field('color_text', 'term_'.$termID);
+          $categoryURL = get_category_link( $category[0]->term_id );
+        } ?>
+      <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+      <h1 class="text-800 mt-3"><?php the_title() ?></h1>
+      <p class="mt-3"><strong>Con:</strong> <?php the_author() ?></p>
+    </div>
+  </div>
+  <?php endwhile ?>
 </div>
 
 <?php get_footer() ?>

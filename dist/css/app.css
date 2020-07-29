@@ -17132,6 +17132,8 @@ body {
 
 #our-sections .card:first-child .card-img-top {
   height: 40rem;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #our-sections .card:not(:first-child) .card-img-top {
@@ -17154,8 +17156,20 @@ body {
   background-color: #100901;
 }
 
-#more-videos-bottom {
-  height: 10rem;
+#blog-section {
+  position: relative;
+  min-height: 40rem;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+#blog-section .caption {
+  background-color: #FFF;
+  position: absolute;
+  width: 50%;
+  bottom: -4rem;
+  left: 28%;
 }
 
 
