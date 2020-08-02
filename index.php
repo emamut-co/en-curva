@@ -58,10 +58,10 @@ $first = true; ?>
       <div class="col-md-8">
         <h4 class="subtitle mb-3">EN NUESTRAS SECCIONES</h4>
         <div class="card-columns" id="our-sections">
-          <?php $lastPostsArray = new WP_Query(
+          <?php $allPostsArray = new WP_Query(
             array(
               'post_status'       => 'publish',
-              'posts_per_page'    => 3,
+              'posts_per_page'    => 11,
               'order'             => 'DESC',
               'post__not_in'      => $sticky,
               'category__not_in'  => 8,
@@ -75,8 +75,8 @@ $first = true; ?>
             )
           );
 
-          $first = true;
-          while ( $lastPostsArray->have_posts() ) : $lastPostsArray->the_post(); ?>
+          $cont = 0;
+          while ( $allPostsArray->have_posts() ) : $allPostsArray->the_post(); ?>
             <div class="card shadow">
               <?php the_post_thumbnail('large', ['class' => 'card-img-top']) ?>
               <div class="card-body">
@@ -90,7 +90,10 @@ $first = true; ?>
                 <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800"><?php the_title() ?></h5></a>
               </div>
             </div>
-            <?php $first = false;
+            <?php
+            unset($allPostsArray->posts[$cont]);
+            if($cont == 2) break;
+            $cont ++;
           endwhile ?>
         </div>
       </div>
@@ -203,10 +206,57 @@ $first = true; ?>
 
 <div class="row bg-dark bg-section-2">
   <div class="container">
-    <div class="row">
-      <div class="col py-5">
-        Aqui
+    <div class="row mt-5 pt-5">
+      <div class="col">
+        <h4 class="subtitle text-white mt-4 mb-3">TE PODRÍA INTERESAR</h4>
       </div>
+    </div>
+    <div class="row my-5 justify-content-between">
+      <?php $cont = 1;
+      while ( $allPostsArray->have_posts() ) : $allPostsArray->the_post(); ?>
+        <div class="col-5 mx-4 my-3">
+          <div class="card bg-transparent border-0 mb-3">
+            <div class="row no-gutters">
+              <?php if($cont % 2 == 0): ?>
+              <div class="col-md-8">
+                <div class="card-body text-white py-1">
+                  <?php $categories = get_the_category();
+                  if (!empty($categories)) {
+                    $termID = $categories[0]->term_id;
+                    $categoryColor = get_field('color_text', 'term_'.$termID);
+                    $categoryURL = get_category_link( $category[0]->term_id );
+                  } ?>
+                  <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
+                  <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
+                </div>
+              </div>
+              <div class="col-md-4" style="object-fit: cover; object-position: center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
+              </div>
+              <?php else: ?>
+              <div class="col-md-4" style="object-fit: cover; object-position: center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body text-white py-1">
+                  <?php $categories = get_the_category();
+                  if (!empty($categories)) {
+                    $termID = $categories[0]->term_id;
+                    $categoryColor = get_field('color_text', 'term_'.$termID);
+                    $categoryURL = get_category_link( $category[0]->term_id );
+                  } ?>
+                  <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+                  <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
+                  <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
+                </div>
+              </div>
+              <?php endif;
+              $cont ++ ?>
+            </div>
+          </div>
+        </div>
+      <?php endwhile ?>
     </div>
   </div>
 </div>
