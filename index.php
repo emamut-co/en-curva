@@ -113,8 +113,8 @@ $first = true; ?>
         while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
           <div class="card shadow mb-3">
             <div class="row no-gutters">
-              <div class="col-md-4">
-                <?php the_post_thumbnail(array(100, 70), ['class' => 'card-img my-auto']) ?>
+              <div class="col-md-4" style="object-fit: cover; object-position: center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'card-img my-auto']) ?>
               </div>
               <div class="col-md-8">
                 <div class="card-body py-1">
