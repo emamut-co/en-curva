@@ -35,14 +35,16 @@ body
     max-height: 85vh
     overflow: hidden
   .carousel-inner
-    &:after
-      content: '\A'
-      position: absolute
-      width: 100%
-      height: 100%
-      top: 0
-      left: 0
-      background: rgba(0, 0, 0, .6)
+    .carousel-item
+      &:after
+        content: '\A'
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background: rgba(0, 0, 0, .6)
+        background-size: cover
   .carousel-indicators
     li
       height: .4rem
@@ -65,8 +67,14 @@ body
 .subtitle
   color: $black
   font-weight: bold
-  border-left: .4rem solid $orange
   padding-left: .5rem
+  border-left: .4rem solid $orange
+  &.bottom
+    border-left: initial
+    padding-left: initial
+    border-bottom: .4rem solid $orange
+    padding-bottom: .5rem
+
 
 .bg-section-1
   background: url(../img/background.png)
@@ -83,7 +91,8 @@ body
   .card
     &:first-child
       .card-img-top
-        height: 35rem
+        height: 40rem
+        object-fit: cover
     &:not(:first-child)
       .card-img-top
         height: auto
@@ -101,3 +110,16 @@ body
   .wpcf7-form-control
     &.wpcf7-submit
       background-color: #100901
+
+#blog-section
+  position: relative
+  min-height: 40rem
+  background-size: cover !important
+  background-repeat: no-repeat !important
+  background-position: center !important
+  .caption
+    background-color: #FFF
+    position: absolute
+    width: 50%
+    bottom: -4rem
+    left: 28%

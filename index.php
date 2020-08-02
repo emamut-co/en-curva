@@ -60,16 +60,17 @@ $first = true; ?>
         <div class="card-columns" id="our-sections">
           <?php $lastPostsArray = new WP_Query(
             array(
-              'post_status'    => 'publish',
-              'posts_per_page' => 3,
-              'order'          =>'DESC',
-              'post__not_in'   => $sticky,
-              'orderby'        =>'ID',
-              'tax_query' => array( array(
-                'taxonomy' => 'post_format',
-                'field' => 'slug',
-                'terms' => array('post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video'),
-                'operator' => 'NOT IN'
+              'post_status'       => 'publish',
+              'posts_per_page'    => 3,
+              'order'             => 'DESC',
+              'post__not_in'      => $sticky,
+              'category__not_in'  => 8,
+              'orderby'           => 'ID',
+              'tax_query'         => array( array(
+                'taxonomy'  => 'post_format',
+                'field'     => 'slug',
+                'terms'     => array( 'post-format-aside', 'post-format-gallery', 'post-format-link', 'post-format-image', 'post-format-quote', 'post-format-status', 'post-format-audio', 'post-format-chat', 'post-format-video' ),
+                'operator'  => 'NOT IN'
               ) )
             )
           );
@@ -112,8 +113,8 @@ $first = true; ?>
         while ( $mostViewedArray->have_posts() ): $mostViewedArray->the_post() ?>
           <div class="card shadow mb-3">
             <div class="row no-gutters">
-              <div class="col-md-4">
-                <?php the_post_thumbnail(array(100, 70), ['class' => 'card-img my-auto']) ?>
+              <div class="col-md-4" style="object-fit: cover; object-position: center">
+                <?php the_post_thumbnail('thumbnail', ['class' => 'card-img my-auto']) ?>
               </div>
               <div class="col-md-8">
                 <div class="card-body py-1">
@@ -173,80 +174,31 @@ $first = true; ?>
   </div>
 </div>
 
-<div class="row bg-dark bg-section-2 py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h4 class="subtitle text-white mb-3">VIDEO DESTACADO</h4>
-      </div>
-    </div>
-    <div class="row">
-      <?php $my_acf_checkbox_field_arr = get_field('sticky');
-      $highlightedVideo = new WP_Query(
-        array(
-          'posts_per_page'  => 5,
-          'meta_key'		    => 'sticky',
-          'meta_value'	    => $my_acf_checkbox_field_arr,
-          'tax_query'       => array (
-            array (
-              'taxonomy'    => 'post_format',
-              'field'       => 'slug',
-              'terms'       => array( 'post-format-video' )
-            )
-          )
-        )
-      );
-      $cont = 0;
-      while ( $highlightedVideo->have_posts() ) : $highlightedVideo->the_post();
-        if($cont == 0): ?>
-          <div class="col-md-7">
-            <?php $blocks = parse_blocks(get_the_content());
-            foreach ($blocks as $block) {
-              if($block['blockName'] == 'core-embed/youtube')
-                echo preg_replace(
-                  "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                  "<iframe width=\"100%\" height=\"600\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
-                  $block['innerHTML']
-                );
-            }
-            $categories = get_the_category();
-            if (!empty($categories)) {
-              $termID = $categories[0]->term_id;
-              $categoryColor = get_field('color_text', 'term_'.$termID);
-              $categoryURL = get_category_link( $category[0]->term_id );
-            } ?>
-            <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-            <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
-          </div>
-          <div class="col-md-5">
-        <?php else: ?>
-          <div class="media">
-            <?php $blocks = parse_blocks(get_the_content());
-            foreach ($blocks as $block) {
-              if($block['blockName'] == 'core-embed/youtube')
-                echo preg_replace(
-                  "/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                  "<iframe class=\"align-self-center mr-3\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",
-                  $block['innerHTML']
-                );
-            }
-            $categories = get_the_category();
-            if (!empty($categories)) {
-              $termID = $categories[0]->term_id;
-              $categoryColor = get_field('color_text', 'term_'.$termID);
-              $categoryURL = get_category_link( $category[0]->term_id );
-            } ?>
-            <div class="media-body">
-              <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
-              <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
-            </div>
-          </div>
-        <?php endif;
-        $cont++;
-      endwhile; ?>
-      </div>
+<?php
+  $blogArray = new WP_Query(
+    array(
+      'cat'             => 8,
+      'posts_per_page'  => 1
+    )
+  );
+?>
+
+<div class="row">
+  <?php while ( $blogArray->have_posts() ): $blogArray->the_post(); $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
+  <div class="col position-relative" id="blog-section" style="background: url('<?php echo $thumbnail[0]  ?>')">
+    <div class="text-center p-5 caption">
+      <?php $categories = get_the_category();
+        if (!empty($categories)) {
+          $termID = $categories[0]->term_id;
+          $categoryColor = get_field('color_text', 'term_'.$termID);
+          $categoryURL = get_category_link( $category[0]->term_id );
+        } ?>
+      <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
+      <h1 class="text-800 mt-3"><?php the_title() ?></h1>
+      <p class="mt-3"><strong>Con:</strong> <?php the_author() ?></p>
     </div>
   </div>
+  <?php endwhile ?>
 </div>
 
 <?php get_footer() ?>
