@@ -201,4 +201,14 @@ $first = true; ?>
   <?php endwhile ?>
 </div>
 
+<div class="row bg-dark bg-section-2">
+  <div class="container">
+    <div class="row">
+      <div class="col py-5">
+        Aqui
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php get_footer() ?>
