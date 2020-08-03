@@ -5,7 +5,7 @@
         <?php while (have_posts()) : the_post(); ?>
           <div class="row mt-5 pt-4">
             <div class="col-12">
-              <span class="text-dark"><?php the_category(' | ') ?></span>
+              <span class="text-dark" style="font-weight: bold;"><?php the_category(' | ') ?></span>
               <h1 class="title"><?php the_title() ?></h1>
               <span class="text-muted"><?php echo get_the_date( 'l, j M Y' ); ?></span>
             </div>
@@ -25,4 +25,9 @@
       <?php endif ?>
   </div>
 
+  <script>
+    jQuery(document).ready(function() {
+      $('img').addClass('img-fluid')
+    });
+  </script>
 <?php get_footer() ?>
