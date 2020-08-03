@@ -168,8 +168,8 @@ $first = true; ?>
   </div>
 </div>
 
-<div class="row bg-gray justify-content-center py-5 my-5">
-  <div class="col-md-6">
+<div class="row bg-gray justify-content-center my-5">
+  <div class="col-md-6 py-5">
     <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
@@ -258,6 +258,15 @@ $first = true; ?>
         </div>
       <?php endwhile ?>
     </div>
+  </div>
+</div>
+
+<div class="row bg-orange justify-content-center py-5">
+  <div class="col-md-6 py-5">
+    <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
+    <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
+    <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
+    <small id="emailHelp" class="form-text text-muted">Al suscribirte aceptas la <span class="font-weight-bold"><a href="#" class="text-dark mt-2">Política de Privacidad de En Curva</a></span></small>
   </div>
 </div>
 
