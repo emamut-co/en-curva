@@ -180,7 +180,7 @@ $first = true; ?>
 <?php
   $blogArray = new WP_Query(
     array(
-      'cat'             => 8,
+      'category_name'   => 'blog-en-curva',
       'posts_per_page'  => 1
     )
   );
