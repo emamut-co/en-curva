@@ -17113,6 +17113,10 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.bg-orange {
+  background-color: #FFB053;
+}
+
 .bg-section-1 {
   background: url(../../images/background.png?2d11ee0a63b4366912baa664eadbbd8a);
   background-size: contain;

@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/encurvac/public_html/wp-content/themes/encurva
-    - /bin/cp -R encurva $DEPLOYPATH
