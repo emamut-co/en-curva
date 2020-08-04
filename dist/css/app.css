@@ -17099,14 +17099,16 @@ body {
   font-weight: bold;
 }
 
-.subtitle {
+.subtitle,
+.widget-title {
   color: #2A2A2A;
   font-weight: bold;
   padding-left: 0.5rem;
   border-left: 0.4rem solid #FFB053;
 }
 
-.subtitle.bottom {
+.subtitle.bottom,
+.widget-title.bottom {
   border-left: initial;
   padding-left: initial;
   border-bottom: 0.4rem solid #FFB053;

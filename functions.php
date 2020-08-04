@@ -27,6 +27,26 @@ function register_navwalker(){
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
 
+function my_favicon() { ?>
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri() . '/img/favicon.ico' ?>" >
+<?php }
+add_action('wp_head', 'my_favicon');
+
+function my_sidebar() {
+  register_sidebar(
+    array (
+      'name' => __( 'Sidebar', 'emamut' ),
+      'id' => 'custom-side-bar',
+      'description' => __( 'Custom Sidebar', 'emamut' ),
+      'before_widget' => '<div class="widget-content">',
+      'after_widget' => "</div>",
+      'before_title' => '<h3 class="widget-title">',
+      'after_title' => '</h3>',
+    )
+  );
+}
+add_action( 'widgets_init', 'my_sidebar' );
+
 function config_custom_logo() {
   add_theme_support( 'custom-logo' );
 }
