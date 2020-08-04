@@ -82,9 +82,9 @@ $first = true; ?>
               <div class="card-body">
                 <?php $categories = get_the_category();
                 if (!empty($categories)) {
-                  $termID = $categories[0]->term_id;
-                  $categoryColor = get_field('color_text', 'term_'.$termID);
-                  $categoryURL = get_category_link( $category[0]->term_id );
+                  $termID = $categories[0]->cat_ID;
+                  $categoryColor = get_field('color_text', 'term_' . $termID);
+                  $categoryURL = get_category_link( $termID );
                 } ?>
                 <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
                 <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800"><?php the_title() ?></h5></a>
@@ -123,9 +123,9 @@ $first = true; ?>
                 <div class="card-body py-1">
                   <?php $categories = get_the_category();
                   if (!empty($categories)) {
-                    $termID = $categories[0]->term_id;
-                    $categoryColor = get_field('color_text', 'term_'.$termID);
-                    $categoryURL = get_category_link( $category[0]->term_id );
+                    $termID = $categories[0]->cat_ID;
+                    $categoryColor = get_field('color_text', 'term_' . $termID);
+                    $categoryURL = get_category_link( $termID );
                   } ?>
                   <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
                   <a href="<?php the_permalink() ?>"><h5 class="card-title text-dark text-800 mb-0"><?php the_title() ?></h5></a>
@@ -192,9 +192,9 @@ $first = true; ?>
     <div class="text-center p-5 caption">
       <?php $categories = get_the_category();
         if (!empty($categories)) {
-          $termID = $categories[0]->term_id;
-          $categoryColor = get_field('color_text', 'term_'.$termID);
-          $categoryURL = get_category_link( $category[0]->term_id );
+          $termID = $categories[0]->cat_ID;
+          $categoryColor = get_field('color_text', 'term_' . $termID);
+          $categoryURL = get_category_link( $termID );
         } ?>
       <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
       <h1 class="text-800 mt-3"><?php the_title() ?></h1>
@@ -222,9 +222,9 @@ $first = true; ?>
                 <div class="card-body text-white py-1">
                   <?php $categories = get_the_category();
                   if (!empty($categories)) {
-                    $termID = $categories[0]->term_id;
-                    $categoryColor = get_field('color_text', 'term_'.$termID);
-                    $categoryURL = get_category_link( $category[0]->term_id );
+                    $termID = $categories[0]->cat_ID;
+                    $categoryColor = get_field('color_text', 'term_' . $termID);
+                    $categoryURL = get_category_link( $termID );
                   } ?>
                   <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
                   <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
@@ -242,9 +242,9 @@ $first = true; ?>
                 <div class="card-body text-white py-1">
                   <?php $categories = get_the_category();
                   if (!empty($categories)) {
-                    $termID = $categories[0]->term_id;
-                    $categoryColor = get_field('color_text', 'term_'.$termID);
-                    $categoryURL = get_category_link( $category[0]->term_id );
+                    $termID = $categories[0]->cat_ID;
+                    $categoryColor = get_field('color_text', 'term_' . $termID);
+                    $categoryURL = get_category_link( $termID );
                   } ?>
                   <a href="<?php echo esc_url( $categoryURL ); ?>" class="category" style="font-weight: bold; color: <?php echo $categoryColor; ?>"><?php echo $categories[0]->name ?></a>
                   <a href="<?php the_permalink() ?>"><h5 class="card-title text-white text-800 mb-0"><?php the_title() ?></h5></a>
