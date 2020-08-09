@@ -70,17 +70,18 @@ function myplugin_ajaxurl() {
     </script>";
 }
 
-// add_filter('the_content', function($content) {
-//   return str_replace(array("<iframe", "</iframe>"), array('<div class="iframe-container"><iframe', "</iframe></div>"), $content);
-// });
+function add_responsive_class($content){
+  $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+  $document = new DOMDocument();
+  libxml_use_internal_errors(true);
+  $document->loadHTML(utf8_decode($content));
 
-// add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
-//   if(strpos($html, 'youtube.com') !== false || strpos($html, 'youtu.be') !== false)
-//     return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
-//   else
-//     return $html;
-// }, 10, 4);
+  $imgs = $document->getElementsByTagName('img');
+  foreach ($imgs as $img) {
+      $img->setAttribute('class','img-fluid');
+  }
 
-// add_filter('embed_oembed_html', function($code) {
-//   return str_replace('<iframe', '<iframe class="embed-responsive-item" ', $code);
-// });
+  $html = $document->saveHTML();
+  return $html;
+}
+add_filter ('the_content', 'add_responsive_class');
