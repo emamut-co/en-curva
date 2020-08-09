@@ -17131,13 +17131,18 @@ body {
   background-size: contain;
 }
 
+#our-sections .card-title,
+#most-read .card-title {
+  font-size: 1.1rem;
+}
+
 #our-sections {
   -moz-column-count: 2;
        column-count: 2;
 }
 
 #our-sections .card:first-child .card-img-top {
-  height: 40rem;
+  height: 39.5rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
