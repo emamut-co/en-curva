@@ -8,7 +8,7 @@ $color_text = get_field('color_text', $term); ?>
   <div class="row">
     <div class="col text-center" style="background-image: url(<?php echo $background_image['url'] ?>); border-bottom: .3rem solid <?php echo $color_text ?>" id="category-header">
       <p class="text-orange">Lo que hay de nuevo en</p>
-      <span class="h1 text-white">
+      <span class="h1 text-white text-800">
         <?php echo single_cat_title( '', false ); ?>
       </span>
     </div>

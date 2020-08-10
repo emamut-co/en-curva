@@ -1,3 +1,6 @@
+<?php $term = get_queried_object();
+
+$color_text = get_field('color_text', $term); ?>
 <div class="card mb-4 border-0">
   <div class="row no-gutters">
     <div class="col-md-4">
