@@ -125,7 +125,7 @@ $first = true; ?>
 <div class="row">
   <?php while ( $blogArray->have_posts() ): $blogArray->the_post(); $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' ); ?>
   <div class="col position-relative" id="blog-section" style="background: url('<?php echo $thumbnail[0]  ?>')">
-    <div class="text-center p-5 caption">
+    <div class="text-center p-3 p-md-5 caption">
       <?php $categories = get_the_category();
         if (!empty($categories)) {
           $termID = $categories[0]->cat_ID;
@@ -150,7 +150,7 @@ $first = true; ?>
     <div class="row my-5 justify-content-between">
       <?php $cont = 1;
       while ( $allPostsArray->have_posts() ) : $allPostsArray->the_post(); ?>
-        <div class="col-5 mx-4 my-3">
+        <div class="col-6 col-md-5 mx-md-4 my-3">
           <div class="card bg-transparent border-0 mb-3">
             <div class="row no-gutters">
               <?php if($cont % 2 == 0): ?>

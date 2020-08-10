@@ -35,12 +35,20 @@
     </div>
     <div class="row pt-5">
       <div class="col-12">
-        <div class="list-group list-group-horizontal">
-          <a href="#" class="list-group-item list-group-item-action text-center border-0">Acerca de Nosotros</a>
-          <a href="#" class="list-group-item list-group-item-action text-center border-0">Contactanos</a>
-          <a href="#" class="list-group-item list-group-item-action text-center border-0">Terminos y condiciones</a>
-          <a href="#" class="list-group-item list-group-item-action text-center border-0">Política de Privacidad</a>
-        </div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
+          <div class="container">
+            <?php wp_nav_menu( array(
+              'theme_location'    => 'footer',
+              'depth'             => 1,
+              'container'         => 'div',
+              'container_class'   => 'collapse navbar-collapse',
+              'container_id'      => 'footer-menu',
+              'menu_class'        => 'nav navbar-nav mx-auto',
+              'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+              'walker'            => new WP_Bootstrap_Navwalker()
+            ) ); ?>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
