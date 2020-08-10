@@ -70,17 +70,85 @@ function myplugin_ajaxurl() {
     </script>";
 }
 
-// add_filter('the_content', function($content) {
-//   return str_replace(array("<iframe", "</iframe>"), array('<div class="iframe-container"><iframe', "</iframe></div>"), $content);
-// });
+function add_responsive_class($content){
+  $content = mb_convert_encoding($content, 'HTML-ENTITIES', "UTF-8");
+  $document = new DOMDocument();
+  libxml_use_internal_errors(true);
+  $document->loadHTML(utf8_decode($content));
 
-// add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
-//   if(strpos($html, 'youtube.com') !== false || strpos($html, 'youtu.be') !== false)
-//     return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
-//   else
-//     return $html;
-// }, 10, 4);
+  $imgs = $document->getElementsByTagName('img');
+  foreach ($imgs as $img) {
+      $img->setAttribute('class','img-fluid');
+  }
 
-// add_filter('embed_oembed_html', function($code) {
-//   return str_replace('<iframe', '<iframe class="embed-responsive-item" ', $code);
-// });
+  $html = $document->saveHTML();
+  return $html;
+}
+add_filter ('the_content', 'add_responsive_class');
+
+function emamut_numeric_posts_nav() {
+  if( is_singular() )
+    return;
+
+  global $wp_query;
+
+  /** Stop execution if there's only 1 page */
+  if( $wp_query->max_num_pages <= 1 )
+    return;
+
+  $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+  $max   = intval( $wp_query->max_num_pages );
+
+  /** Add current page to the array */
+  if ( $paged >= 1 )
+    $links[] = $paged;
+
+  /** Add the pages around the current page to the array */
+  if ( $paged >= 3 ) {
+    $links[] = $paged - 1;
+    $links[] = $paged - 2;
+  }
+
+  if ( ( $paged + 2 ) <= $max ) {
+    $links[] = $paged + 2;
+    $links[] = $paged + 1;
+  }
+
+  echo '<nav aria-label="Blog navigation"><ul class="pagination justify-content-center">' . "\n";
+
+  /** Previous Post Link */
+  if ( get_previous_posts_link() )
+    printf( '<li class="page-item mt-2">%s</li>' . "\n", get_previous_posts_link('<i class="fas fa-chevron-left"></i> PREVIAS') );
+
+  /** Link to first page, plus ellipses if necessary */
+  if ( ! in_array( 1, $links ) ) {
+    $class = 1 == $paged ? 'active' : '';
+
+    printf( '<li class="page-item %s"><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+
+    if ( ! in_array( 2, $links ) )
+      echo '<li class="page-item">…</li>';
+  }
+
+  /** Link to current page, plus 2 pages in either direction if necessary */
+  sort( $links );
+  foreach ( (array) $links as $link ) {
+    $class = $paged == $link ? 'active' : '';
+    printf( '<li class="page-item %s"><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+  }
+
+  /** Link to last page, plus ellipses if necessary */
+  if ( ! in_array( $max, $links ) ) {
+    if ( ! in_array( $max - 1, $links ) )
+      echo '<li class="page-item">…</li>' . "\n";
+
+    $class = $paged == $max ? ' class="active"' : '';
+    printf( '<li class="page-item"%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+  }
+
+  /** Next Post Link */
+  if ( get_next_posts_link() )
+    printf( '<li class="page-item mt-2">%s</li>' . "\n", get_next_posts_link('SIGUIENTES <i class="fas fa-chevron-right"></i>') );
+
+  echo '</ul></nav>' . "\n";
+}

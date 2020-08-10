@@ -12,14 +12,15 @@
       </div>
       <div class="row mt-2">
         <div class="col-12">
-          <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto img-fluid']) ?>
+          <?php the_post_thumbnail('large', ['class' => 'w-100']) ?>
         </div>
       </div>
-      <div class="row mt-4">
-        <div class="col-md-8">
+      <div class="row mt-5">
+        <div class="col-md-8" id="the-content">
           <?php the_content() ?>
         </div>
         <div class="col-md-4">
+          <?php get_template_part( 'partials/sidebar', 'template' ); ?>
           <?php if ( is_active_sidebar( 'custom-side-bar' ) )
             dynamic_sidebar( 'custom-side-bar' ); ?>
         </div>
@@ -28,9 +29,4 @@
   <?php endif ?>
   </div>
 
-  <script>
-    jQuery(document).ready(function() {
-      $('img').addClass('img-fluid');
-    });
-  </script>
 <?php get_footer() ?>
