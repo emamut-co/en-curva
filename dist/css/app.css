@@ -17235,6 +17235,11 @@ body {
   color: #000;
 }
 
+#footer-menu .nav-link {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 @media (max-width: 767px) {
   #our-sections .card:first-child .card-img-top {
     height: auto;
