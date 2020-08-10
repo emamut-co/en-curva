@@ -17202,5 +17202,38 @@ body {
      object-fit: cover;
 }
 
+.pagination {
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+}
+
+.pagination .page-item {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.pagination .page-item i {
+  color: #FFB053;
+}
+
+.pagination .page-item a {
+  color: #000;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+}
+
+.pagination .page-item.active .page-link {
+  font-family: "Raleway", sans-serif;
+  background-color: transparent;
+  border-color: #FFF;
+  border-bottom: 0.2rem solid #FFB053;
+}
+
+.pagination .page-item .page-link {
+  font-family: "Raleway", sans-serif;
+  border-color: #FFF;
+  color: #000;
+}
+
 
 /*# sourceMappingURL=app.css.map*/

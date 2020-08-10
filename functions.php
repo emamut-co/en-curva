@@ -114,11 +114,11 @@ function emamut_numeric_posts_nav() {
     $links[] = $paged + 1;
   }
 
-  echo '<nav aria-label="Blog navigation"><ul class="pagination pagination-sm">' . "\n";
+  echo '<nav aria-label="Blog navigation"><ul class="pagination justify-content-center">' . "\n";
 
   /** Previous Post Link */
   if ( get_previous_posts_link() )
-    printf( '<li class="page-item">%s</li>' . "\n", get_previous_posts_link('<i class="fas fa-chevron-left"></i>') );
+    printf( '<li class="page-item mt-2">%s</li>' . "\n", get_previous_posts_link('<i class="fas fa-chevron-left"></i> PREVIAS') );
 
   /** Link to first page, plus ellipses if necessary */
   if ( ! in_array( 1, $links ) ) {
@@ -148,7 +148,7 @@ function emamut_numeric_posts_nav() {
 
   /** Next Post Link */
   if ( get_next_posts_link() )
-    printf( '<li class="page-item">%s</li>' . "\n", get_next_posts_link('<i class="fas fa-chevron-right"></i>') );
+    printf( '<li class="page-item mt-2">%s</li>' . "\n", get_next_posts_link('SIGUIENTES <i class="fas fa-chevron-right"></i>') );
 
   echo '</ul></nav>' . "\n";
 }

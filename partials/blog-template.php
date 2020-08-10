@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <p class="card-text category" style="font-weight: bold; color: <?php echo $color_text; ?>"><?php echo single_cat_title( '', false ) ?></p>
-        <h5 class="card-title"><?php echo the_title() ?></h5>
+        <h5 class="card-title text-dark text-800"><?php echo the_title() ?></h5>
         <p class="card-text"><?php echo the_excerpt() ?></p>
       </div>
     </div>
