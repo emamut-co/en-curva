@@ -17050,6 +17050,10 @@ body {
   background-color: #F6F6F7;
 }
 
+.text-orange {
+  color: #FFB053;
+}
+
 .category {
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -17181,6 +17185,21 @@ body {
   width: 50%;
   bottom: -4rem;
   left: 28%;
+}
+
+#category-header {
+  font-family: "Raleway", sans-serif;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 11rem;
+  height: 15rem;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+}
+
+#category-cards .card-img {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 

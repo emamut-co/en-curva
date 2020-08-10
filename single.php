@@ -20,8 +20,8 @@
           <?php the_content() ?>
         </div>
         <div class="col-md-4">
-          <?php get_template_part( 'partials/sidebar', 'template' );
-          if ( is_active_sidebar( 'custom-side-bar' ) )
+          <?php get_template_part( 'partials/sidebar', 'template' ); ?>
+          <?php if ( is_active_sidebar( 'custom-side-bar' ) )
             dynamic_sidebar( 'custom-side-bar' ); ?>
         </div>
       </div>
