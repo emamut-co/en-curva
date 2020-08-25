@@ -20,7 +20,7 @@ $sliderArray = new WP_Query(
 $first = true; ?>
 
 <div class="row">
-  <div class="col">
+  <div class="col px-0">
     <?php if ( isset($sticky[0]) ): ?>
     <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -108,7 +108,7 @@ $first = true; ?>
   </div>
 </div>
 
-<div class="row bg-orange justify-content-center py-1 py-md-4">
+<div class="row bg-orange justify-content-center py-1 py-md-4 mt-4">
   <div class="col-md-6 py-2 py-md-5">
     <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
