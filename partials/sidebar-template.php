@@ -31,7 +31,9 @@
     </li>
   <?php endwhile ?>
 </ul>
-<img src="<?php echo get_template_directory_uri() ?>/images/ads-sample.png" alt="" class="img-fluid">
+<div class="d-none d-md-block text-center">
+  <img src="<?php echo get_template_directory_uri() ?>/images/ads-sample.png" alt="" class="img-fluid">
+</div>
 <h4 class="subtitle mt-4 mb-3">SÍGUENOS EN REDES</h4>
 <ul class="list-inline" id="rrss-icons">
   <li class="list-inline-item px-0">
