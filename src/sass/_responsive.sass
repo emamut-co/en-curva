@@ -1,9 +1,22 @@
 @media (max-width: 767px)
+  #main-carousel
+    .carousel-item
+      img
+        height: 85vh !important
+        object-fit: cover !important
+    .carousel-caption
+      bottom: 5rem
+      h1
+        font-size: 2rem
+    .carousel-indicators
+      bottom: 3rem
+
   #our-sections
+    column-count: 1
     .card
       &:first-child
         .card-img-top
-          height: auto
+          height: 27rem
   #blog-section
     min-height: 30rem
     .caption

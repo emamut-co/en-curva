@@ -32,7 +32,7 @@ $first = true; ?>
         <?php while ( $sliderArray->have_posts() ) : $sliderArray->the_post(); ?>
         <div class="carousel-item<?php if($first) echo ' active' ?>">
           <?php the_post_thumbnail('large', ['class' => 'd-block mx-auto w-100 h-auto']) ?>
-          <div class="carousel-caption d-none d-md-block">
+          <div class="carousel-caption">
             <a href="<?php the_permalink() ?>"><h1 class="text-800"><?php the_title() ?></h1></a>
           </div>
         </div>
@@ -50,6 +50,10 @@ $first = true; ?>
     </div>
     <?php endif ?>
   </div>
+</div>
+
+<div class="d-block d-md-none text-center mt-4">
+  <img src="<?php echo get_template_directory_uri() ?>/images/ads-sample.png" alt="" class="img-fluid">
 </div>
 
 <div class="row bg-section-1">
@@ -104,8 +108,8 @@ $first = true; ?>
   </div>
 </div>
 
-<div class="row bg-orange justify-content-center py-4">
-  <div class="col-md-6 py-5">
+<div class="row bg-orange justify-content-center py-1 py-md-4">
+  <div class="col-md-6 py-2 py-md-5">
     <h5 class="text-800">¡NEWSLETTER PARA AVENTUREROS!</h5>
     <p class="font-lato">Suscríbete al boletín En Curva para noticias, eventos y mucho más</p>
     <?php echo do_shortcode('[contact-form-7 html_id="newsletter-form" html_class="form-inline" title="Newsletter form 1"]') ?>
@@ -150,11 +154,11 @@ $first = true; ?>
     <div class="row my-5 justify-content-between">
       <?php $cont = 1;
       while ( $allPostsArray->have_posts() ) : $allPostsArray->the_post(); ?>
-        <div class="col-6 col-md-5 mx-md-4 my-3">
+        <div class="col-md-5 mx-md-4 my-3">
           <div class="card bg-transparent border-0 mb-3">
             <div class="row no-gutters">
               <?php if($cont % 2 == 0): ?>
-              <div class="col-md-8">
+              <div class="col-8">
                 <div class="card-body text-white py-1">
                   <?php $categories = get_the_category();
                   if (!empty($categories)) {
@@ -167,14 +171,14 @@ $first = true; ?>
                   <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
                 </div>
               </div>
-              <div class="col-md-4" style="object-fit: cover; object-position: center">
+              <div class="col-4" style="object-fit: cover; object-position: center">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
               </div>
               <?php else: ?>
-              <div class="col-md-4" style="object-fit: cover; object-position: center">
+              <div class="col-4" style="object-fit: cover; object-position: center">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
               </div>
-              <div class="col-md-8">
+              <div class="col-8">
                 <div class="card-body text-white py-1">
                   <?php $categories = get_the_category();
                   if (!empty($categories)) {
