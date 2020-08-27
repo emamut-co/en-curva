@@ -17276,6 +17276,10 @@ body {
     width: 100%;
     left: 0;
   }
+
+  .blog-img img {
+    height: 7rem;
+  }
 }
 
 

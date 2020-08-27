@@ -35,29 +35,31 @@
   <img src="<?php echo get_template_directory_uri() ?>/images/ads-sample.png" alt="" class="img-fluid">
 </div>
 <h4 class="subtitle mt-5 mb-3">SÍGUENOS EN REDES</h4>
-<ul class="list-inline" id="rrss-icons">
-  <li class="list-inline-item px-0">
-    <span class="fa-stack fa-1x">
-      <i class="far fa-circle fa-stack-2x"></i>
-      <i class="fab fa-facebook-f fa-stack-1x"></i>
-    </span>
-  </li>
-  <li class="list-inline-item px-0">
-    <span class="fa-stack fa-1x">
-      <i class="far fa-circle fa-stack-2x"></i>
-      <i class="fab fa-twitter fa-stack-1x"></i>
-    </span>
-  </li>
-  <li class="list-inline-item px-0">
-    <span class="fa-stack fa-1x">
-      <i class="far fa-circle fa-stack-2x"></i>
-      <i class="fab fa-youtube fa-stack-1x"></i>
-    </span>
-  </li>
-  <li class="list-inline-item px-0">
-    <span class="fa-stack fa-1x">
-      <i class="far fa-circle fa-stack-2x"></i>
-      <i class="fab fa-instagram fa-stack-1x"></i>
-    </span>
-  </li>
-</ul>
+<div class="text-center text-md-left">
+  <ul class="list-inline" id="rrss-icons">
+    <li class="list-inline-item px-0">
+      <span class="fa-stack fa-1x">
+        <i class="far fa-circle fa-stack-2x"></i>
+        <i class="fab fa-facebook-f fa-stack-1x"></i>
+      </span>
+    </li>
+    <li class="list-inline-item px-0">
+      <span class="fa-stack fa-1x">
+        <i class="far fa-circle fa-stack-2x"></i>
+        <i class="fab fa-twitter fa-stack-1x"></i>
+      </span>
+    </li>
+    <li class="list-inline-item px-0">
+      <span class="fa-stack fa-1x">
+        <i class="far fa-circle fa-stack-2x"></i>
+        <i class="fab fa-youtube fa-stack-1x"></i>
+      </span>
+    </li>
+    <li class="list-inline-item px-0">
+      <span class="fa-stack fa-1x">
+        <i class="far fa-circle fa-stack-2x"></i>
+        <i class="fab fa-instagram fa-stack-1x"></i>
+      </span>
+    </li>
+  </ul>
+</div>
