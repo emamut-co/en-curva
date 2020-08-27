@@ -171,11 +171,11 @@ $first = true; ?>
                   <small class="card-text"><?php echo get_the_date( 'l, j M Y' ); ?></small>
                 </div>
               </div>
-              <div class="col-4" style="object-fit: cover; object-position: center">
+              <div class="col-4 blog-img" style="object-fit: cover; object-position: center">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
               </div>
               <?php else: ?>
-              <div class="col-4" style="object-fit: cover; object-position: center">
+              <div class="col-4 blog-img" style="object-fit: cover; object-position: center">
                 <?php the_post_thumbnail('thumbnail', ['class' => 'card-img rounded-circle my-auto']) ?>
               </div>
               <div class="col-8">
