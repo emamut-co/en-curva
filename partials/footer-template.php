@@ -1,11 +1,11 @@
 <footer class="py-5">
   <div class="container">
     <div class="row justify-content-between border-bottom border-secondary pb-4">
-      <div class="col">
-        <a href="<?php echo get_site_url() ?>"><?php echo theme_get_custom_logo(); ?></a>
+      <div class="col-md-6 text-center text-md-left">
+        <a href="<?php echo get_site_url() ?>" class="d-block"><?php echo theme_get_custom_logo(); ?></a>
       </div>
-      <div class="col text-right">
-        <ul class="list-inline">
+      <div class="col-md-6 text-center text-md-right">
+        <ul class="list-inline mx-auto mt-4 mt-md-0">
           <li class="list-inline-item">
             <span class="fa-stack fa-1x">
               <i class="far fa-circle fa-stack-2x"></i>
@@ -33,15 +33,14 @@
         </ul>
       </div>
     </div>
-    <div class="row pt-5">
-      <div class="col-12">
+    <div class="row pt-3 pt-md-5">
+      <div class="col">
         <nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
           <div class="container">
             <?php wp_nav_menu( array(
               'theme_location'    => 'footer',
               'depth'             => 1,
               'container'         => 'div',
-              'container_class'   => 'collapse navbar-collapse',
               'container_id'      => 'footer-menu',
               'menu_class'        => 'nav navbar-nav mx-auto',
               'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
