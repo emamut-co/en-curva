@@ -37,14 +37,14 @@
   <img src="<?php echo get_template_directory_uri() ?>/images/ads-sample.png" alt="" class="img-fluid">
 </div>
 
-<a class="d-block d-md-none text-dark text-center mt-4" data-toggle="collapse" href="#more-most-viewed" role="button" aria-expanded="false" aria-controls="more-most-viewed" id="remove-collapse">
+<!-- <a class="d-block d-md-none text-dark text-center mt-4" data-toggle="collapse" href="#more-most-viewed" role="button" aria-expanded="false" aria-controls="more-most-viewed" id="remove-collapse">
   VER MÁS HISTORIAS <br>
   <i class="fas fa-chevron-down fa-2x text-orange"></i>
 </a>
 
 <div class="collapse" id="more-most-viewed">
   Aqui
-</div>
+</div> -->
 
 <h4 class="subtitle mt-5 mb-3">SÍGUENOS EN REDES</h4>
 <div class="text-center text-md-left">

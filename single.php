@@ -12,7 +12,7 @@
       </div>
       <div class="row mt-2">
         <div class="col-12">
-          <?php the_post_thumbnail('large', ['class' => 'w-100']) ?>
+          <?php the_post_thumbnail('large', ['class' => 'img-fluid']) ?>
         </div>
       </div>
       <div class="row mt-5">
