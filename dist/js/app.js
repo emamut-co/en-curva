@@ -1956,7 +1956,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       mainURL: '/wp-json/wp/v2/posts?filter[cat]=',
-      categoryArray: []
+      categoryArray: [],
+      tagsArray: []
     };
   },
   props: ['id', 'color', 'name'],
@@ -1964,6 +1965,9 @@ __webpack_require__.r(__webpack_exports__);
     var self = this;
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(siteURL + this.mainURL + this.id).then(function (response) {
       self.categoryArray = response.data;
+    });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(siteURL + '/wp-json/get_tags_in_use/v1/category/' + this.id).then(function (response) {
+      console.log('response', response.data);
     });
   }
 });

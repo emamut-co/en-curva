@@ -47,6 +47,7 @@ export default {
     return {
       mainURL: '/wp-json/wp/v2/posts?filter[cat]=',
       categoryArray: [],
+      tagsArray: [],
     };
   },
   props: ['id', 'color', 'name'],
@@ -56,6 +57,12 @@ export default {
     axios.get(siteURL + this.mainURL + this.id).then(function(response) {
       self.categoryArray = response.data;
     });
+
+    axios
+      .get(siteURL + '/wp-json/get_tags_in_use/v1/category/' + this.id)
+      .then(function(response) {
+        console.log('response', response.data);
+      });
   },
 };
 </script>
